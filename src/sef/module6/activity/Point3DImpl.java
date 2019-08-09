@@ -7,7 +7,7 @@ package sef.module6.activity;
  * a set of values x, y an z that represents the coordinates along each plane
  */
 public class Point3DImpl extends Point2DImpl implements Point3D{
-	
+
 	@SuppressWarnings("unused")
 	private double z;
 	
@@ -26,8 +26,11 @@ public class Point3DImpl extends Point2DImpl implements Point3D{
 	 * @param y coordinate along the y axis
 	 * @param z coordinate along the z axis
 	 */
+
 	public Point3DImpl(double x, double y, double z){
-		
+		x = x;
+		y = y;
+		this.z = z;
 	}
 	
 	

@@ -3,7 +3,7 @@ package sef.module6.activity;
  * @author  John Doe
  * 
  * This interface represents a point in 3D space.  The coordinates are represented by
- * a set of values x, y an z that represents the coordinates along each plane
+ * a set of values x, y and z that represents the coordinates along each plane
  */
 public interface Point3D extends Point2D{
 	
