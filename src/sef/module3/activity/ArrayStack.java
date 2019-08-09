@@ -38,7 +38,7 @@ public class ArrayStack{
 		
 		//TODO #2: Write code that will initialize the array 'stack' as an 
 		//array of objects with a maximum length specified by the parameter 'maximum'
-		//stack = new int[maximum];
+		stack = new Object[maximum];
 		//END TODO #2
 	
 		
@@ -60,7 +60,7 @@ public class ArrayStack{
 		
 		//TODO #4: Write decision making code to see if the value of 'count' is 0.  
 		//If true, set the value of 'temp' to null
-		if (count == 0) {
+		if (getCount() == 0) {
 			temp = null;
 		}
 		//END TODO #4
@@ -68,7 +68,7 @@ public class ArrayStack{
 		
 		//TODO #5: Write code that will assign to temp, the 
 		//last element pushed into this array
-		temp = stack[stack.length-1];
+		temp = stack[getCount()-1];
 		//END TODO #5
 		
 		return temp;
@@ -85,9 +85,9 @@ public class ArrayStack{
 		//TODO #6: Write decision making code that checks if there is enough 
 		//space in the array to store one more 'element'.  If there is no more space, 
 		//return false
-//		if (stack.length - 1 != null) {
-//			return false;
-//		}
+		if (!(getMaximum() > getCount())) {
+			return false;
+		}
 		//END TODO #6
 		
 		
@@ -95,8 +95,8 @@ public class ArrayStack{
 		//TODO #7: Write code that will add the Object parameter 'element' to the next
 		//available index of the array. The integer variable 'count' should be increased
 		//by 1 to indicate this addition to the array
-//		++count;
-//		stack.setInt(element);
+
+		stack[count++] = element;
 		//END TODO #7
 		
 		return true;
@@ -113,7 +113,7 @@ public class ArrayStack{
 		
 		//TODO #8: Write code that will check if there are any elements contained in 
 		//the 'stack' array.  If there array is empty, return null
-		if (stack.length == 0) {
+		if (getCount() == 0) {
 			return null; //какая-то лажа, этот метод ничего не должен возвращать
 		}
 		//END TODO #8
@@ -121,15 +121,14 @@ public class ArrayStack{
 		
 		//TODO #9: Write code that will subtract 1 from the variable 'count' to represent an
 		//element being 'removed' from the array
-//		stack.length - 1 = null;
-//		--count;
+		count = getCount() - 1;
 
 		//END TODO 9
 		
 		
 		//TODO #10: Write code that will get the last element added in the array and assign it
 		//to the variable 'temp'
-		temp = stack[stack.length-1];
+		temp = stack[getCount()];
 		//END TODO #10
 		
 	
@@ -150,9 +149,9 @@ public class ArrayStack{
 		//is specified in the parameter and return its position relative to the end
 		//of the array. 
 		//Ex: An element found at the top of the stack will be at position 0
-		for (int i = stack.length-1; i >= 0; --i) {
-			if (stack[i] == element) {
-				return i;
+		for (int i = 0; i < count; i++) {
+			if (stack[i].equals(element)) {
+				return count-++i;
 			}
 		}
 	
