@@ -9,9 +9,6 @@ package sef.module8.activity;
  *
  */
 public class Account {
-
-
-
 	/**
 	 * Creates an Account object with the specified name.  If the accout name
 	 * given violates the minimum requirements, then an AccountException is thrown
@@ -19,10 +16,14 @@ public class Account {
 	 * @param accountName
 	 * @throws AccountException
 	 */
+	private String accountName;
 	public  Account(String accountName) throws AccountException{
-			
-			
-			
+		this.accountName = accountName;
+		if (accountName.length() < 5) {
+			throw new AccountException("Name must be longer than 4 characters", accountName);
+		} else if (accountName.length() < 5 && !accountName.matches("\\w\\d")) {
+			throw new AccountException("Name must contain a combination of letters and numbers", accountName);
+		}
 	}
 	
 	
@@ -32,6 +33,6 @@ public class Account {
 	 * @return the account name
 	 */
 	public String getName(){
-		return "";
+		return accountName;
 	}
 }
