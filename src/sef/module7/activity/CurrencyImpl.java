@@ -34,28 +34,30 @@ public class CurrencyImpl implements Currency {
 	 * @see sef.module6.activity.Currency#getValue()
 	 */
 	public float getValue() {
-		return 1;
+		return value;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Currency#getDenomination()
 	 */
 	public Denomination getDenomination() {
-		return null;
+		return denomination;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Currency#getCreateDate()
 	 */
 	public Calendar getCreateDate() {
-		return null;
+		return Calendar.getInstance();
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "";
+		return getValue() + " " +
+				getDenomination().toString() +" " +
+				getCreateDate().toString();
 	}
 
 	
@@ -63,8 +65,9 @@ public class CurrencyImpl implements Currency {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object o) {
-		
-		return false;
+		return (o instanceof Currency) &&
+				(getDenomination().equals(((Currency) o).getDenomination()) &&
+				getValue() == ((Currency) o).getValue());
 	}
 
 }

@@ -17,29 +17,34 @@ public class DenominationImpl implements Denomination {
 	 * @param description a description 
 	 * @param symbol
 	 */
+	private  String name;
+	private  String description;
+	private  String symbol;
 	public DenominationImpl(String name, String description, String symbol) {
-	
+		this.name = name;
+		this.description = description;
+		this.symbol = symbol;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Denomination#getDescription()
 	 */
 	public String getDescription() {
-		return "";
+		return description;
 	}
 	
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Denomination#getName()
 	 */
 	public String getName() {
-		return "";
+		return name;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module6.activity.Denomination#getSymbol()
 	 */
 	public String getSymbol() {
-		return "";
+		return symbol;
 	}
 
 	/* (non-Javadoc)
@@ -47,16 +52,18 @@ public class DenominationImpl implements Denomination {
 	 */
 	@Override
 	public String toString() {
-		return "";
+		return getName() + " "+
+				getDescription()+" "+
+				getSymbol();
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object o) {
-		
-		return false;
-
+		return (o instanceof Denomination) &&
+				getName().equals(((Denomination)o).getName()) &&
+						getSymbol().equals(((Denomination)o).getSymbol());
 	}
 
 }

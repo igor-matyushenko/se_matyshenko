@@ -87,7 +87,9 @@ public class Point2DImpl implements Point2D {
 	 */
 	public boolean equals(Object p){
 		
-		return (((Point2D)p).getX() == getX() && ((Point2D)p).getY() == getY());
+		return (p instanceof Point2D) &&
+				((Point2D)p).getX() == getX() &&
+				((Point2D)p).getY() == getY();
 	}
 	
 
