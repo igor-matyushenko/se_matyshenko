@@ -63,7 +63,7 @@ public class DenominationImpl implements Denomination {
 	public boolean equals(Object o) {
 		return (o instanceof Denomination) &&
 				getName().equals(((Denomination)o).getName()) &&
-						getSymbol().equals(((Denomination)o).getSymbol());
+				getSymbol().equals(((Denomination)o).getSymbol());
 	}
 
 }

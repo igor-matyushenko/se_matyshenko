@@ -66,8 +66,8 @@ public class CurrencyImpl implements Currency {
 	 */
 	public boolean equals(Object o) {
 		return (o instanceof Currency) &&
-				(getDenomination().equals(((Currency) o).getDenomination()) &&
-				getValue() == ((Currency) o).getValue());
+				getDenomination().equals(((Currency) o).getDenomination()) &&
+				getValue() == ((Currency) o).getValue();
 	}
 
 }
