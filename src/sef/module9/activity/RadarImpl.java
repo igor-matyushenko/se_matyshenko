@@ -82,7 +82,6 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#returnContacts(java.util.Comparator)
 	 */
 	public List<RadarContact> returnContacts(Comparator<RadarContact> comparator) {
-		comparator = (r1, r2) -> (int) (r1.getDistance() - r2.getDistance());
 		radarContacts.sort(comparator);
 		return new ArrayList<>(radarContacts);
 	}
