@@ -1,9 +1,6 @@
 package sef.module9.activity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Implementation of a Radar 
@@ -63,7 +60,7 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#removeContact(java.lang.String)
 	 */
 	public RadarContact removeContact(String id) {
-		if (!"null".equals(id)) {
+		 if (!"null".equals(id)) {
 			for (RadarContact rd: radarContacts ) {
 				if(id.equals(rd.getContactID())){
 					radarContacts.remove(rd);
@@ -85,10 +82,9 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#returnContacts(java.util.Comparator)
 	 */
 	public List<RadarContact> returnContacts(Comparator<RadarContact> comparator) {
-		List<RadarContact> sortRadarContact = new ArrayList<>(radarContacts);
 		comparator = (r1, r2) -> (int) (r1.getDistance() - r2.getDistance());
-		Collections.sort(sortRadarContact, comparator);
-		return sortRadarContact;
+		radarContacts.sort(comparator);
+		return new ArrayList<>(radarContacts);
 	}
 
 	
