@@ -36,7 +36,7 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#getContact(java.lang.String)
 	 */
 	public RadarContact getContact(String id) {
-		if (!"null".equals(id)) {
+		if (id != null) {
 			for (RadarContact rd: radarContacts ) {
 				if(id.equals(rd.getContactID())){
 					return rd;
@@ -60,7 +60,7 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#removeContact(java.lang.String)
 	 */
 	public RadarContact removeContact(String id) {
-		 if (!"null".equals(id)) {
+		 if (id != null) {
 			for (RadarContact rd: radarContacts ) {
 				if(id.equals(rd.getContactID())){
 					radarContacts.remove(rd);
