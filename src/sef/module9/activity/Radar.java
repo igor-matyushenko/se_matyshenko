@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface Radar {
 
+
 	/**
 	 * Adds a RadarContact to the Radar's list of contacts.  Each contact is unique
 	 * according to the RadarContact.getContactID().  If another contact is added with the 

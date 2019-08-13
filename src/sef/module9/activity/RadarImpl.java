@@ -1,5 +1,6 @@
 package sef.module9.activity;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -11,13 +12,13 @@ import java.util.List;
  */
 public class RadarImpl implements Radar{
 
-
+	private List<RadarContact> radarContacts;
 	
 	/**
 	 *  Constructs a new Radar 
 	 */
 	public RadarImpl(){
-		
+		radarContacts = new ArrayList<RadarContact>();
 	}
 	
 	
@@ -25,45 +26,69 @@ public class RadarImpl implements Radar{
 	 * @see sef.module8.activity.Radar#addContact(sef.module8.activity.RadarContact)
 	 */
 	public RadarContact addContact(RadarContact contact) {
-		return null;
+		if(radarContacts.contains(contact)){
+			int indexContact = radarContacts.indexOf(contact);
+			radarContacts.set(indexContact,contact);
+		} else {
+			radarContacts.add(contact);
+		}
+		return contact;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#getContact(java.lang.String)
 	 */
 	public RadarContact getContact(String id) {
-		return null;
+		if (!"null".equals(id)) {
+			for (RadarContact rd: radarContacts ) {
+				if(id.equals(rd.getContactID())){
+					return rd;
+				}
+			}
+		} return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#getContactCount()
 	 */
 	public int getContactCount() {
-		
-		return 0;
+		int count = 0;
+		for (RadarContact rd: radarContacts) {
+			count++;
+		}
+		return count;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#removeContact(java.lang.String)
 	 */
 	public RadarContact removeContact(String id) {
-		
-		return null;
+		if (!"null".equals(id)) {
+			for (RadarContact rd: radarContacts ) {
+				if(id.equals(rd.getContactID())){
+					radarContacts.remove(rd);
+					return rd;
+				}
+			}
+		} return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#returnContacts()
 	 */
 	public List<RadarContact> returnContacts() {
-		return null;
+
+		return new ArrayList<>(radarContacts);
 	}
 
 	/* (non-Javadoc)
 	 * @see sef.module8.activity.Radar#returnContacts(java.util.Comparator)
 	 */
 	public List<RadarContact> returnContacts(Comparator<RadarContact> comparator) {
-		return null;
-//		return Collections.sort(arg0, new DistanceComparator());
+		List<RadarContact> sortRadarContact = new ArrayList<>(radarContacts);
+		comparator = (r1, r2) -> (int) (r1.getDistance() - r2.getDistance());
+		Collections.sort(sortRadarContact, comparator);
+		return sortRadarContact;
 	}
 
 	
