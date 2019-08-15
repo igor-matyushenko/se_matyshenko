@@ -52,10 +52,4 @@ public class User implements Runnable {
 		return name;
 	}
 
-	public void send(String str) {
-		out.println(str);
-	}
-
-
-
 }

@@ -16,7 +16,7 @@ public class ChatServer {
 		Socket client =null;
 		PrintWriter out=null;
 		boolean endless=true;
-		int port=9888;//0
+		int port=9888;
 
 		try {
 			server = new ServerSocket(port, 50, InetAddress.getLocalHost());//
@@ -30,7 +30,7 @@ public class ChatServer {
 
 				System.out.println("Got a connection from " + client.getInetAddress());
 
-				User user = new User("user_" + i++, client.getInputStream(), client.getOutputStream());
+				User user = new User("user_" +1+ i++, client.getInputStream(), client.getOutputStream());
 				Thread thread = new Thread(user);
 				thread.start();
 				Chat.CHAT.addUser(user);
