@@ -17,9 +17,7 @@ public class ClientSample {
 			Socket socket = new Socket(InetAddress.getLocalHost(), 9999);
 			
 			//Retrieve input or output streams bound to the socket.
-			BufferedReader in = new BufferedReader(
-					new InputStreamReader(
-					socket.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 			String line="";
 			while ((line= in.readLine()) != null)

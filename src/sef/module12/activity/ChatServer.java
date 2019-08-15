@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ChatServer {
-	
+
 	/**
 	 * @param args
 	 */
@@ -16,25 +16,24 @@ public class ChatServer {
 		Socket client =null;
 		PrintWriter out=null;
 		boolean endless=true;
-		int port=9999;
-		
+		int port=9888;//0
+
 		try {
-			server = new ServerSocket(port, 50, InetAddress.getLocalHost());
-			
+			server = new ServerSocket(port, 50, InetAddress.getLocalHost());//
+
 			System.out.println("ServerSocket created at " + server.getInetAddress().getHostAddress());
 			System.out.println("Waiting for connection");
-			
 			int i = 0;
 			while(endless){
+
 				client = server.accept();
-				
+
 				System.out.println("Got a connection from " + client.getInetAddress());
-				
-				User user = new User("user_" + i++, client.getInputStream());
-				
+
+				User user = new User("user_" + i++, client.getInputStream(), client.getOutputStream());
 				Thread thread = new Thread(user);
 				thread.start();
-				
+				Chat.CHAT.addUser(user);
 				out = new PrintWriter(client.getOutputStream(), true);
 				out.println("You have reached server " + client.getInetAddress() + " Have a nice day!");
 			}
@@ -44,10 +43,10 @@ public class ChatServer {
 			try{
 				if(out != null)
 					out.close();
-				
+
 				if (client != null)
 					client.close();
-				
+
 				if (server != null)
 					server.close();
 			} catch(IOException ex){
@@ -55,5 +54,4 @@ public class ChatServer {
 			}
 		}
 	}
-
 }

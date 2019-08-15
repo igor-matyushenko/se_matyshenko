@@ -32,10 +32,10 @@ public class QueueWorker implements Runnable {
 			this.length = task.length();
 
 			doTask();
-			
+
 		}
 	}
-	
+
 	private void doTask(){
 		System.out.println(name + " GIVEN : " + task);
 		for (int i = 0; i < length; i++) {
