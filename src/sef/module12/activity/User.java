@@ -51,5 +51,4 @@ public class User implements Runnable {
 	public String getName() {
 		return name;
 	}
-
 }

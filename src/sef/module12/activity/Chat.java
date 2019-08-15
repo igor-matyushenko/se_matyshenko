@@ -26,6 +26,7 @@ public class Chat {
 			System.out.println("User " + user.getName() + " login" + System.lineSeparator());
 		}
 
+
 		this.chat.add(message);
 		System.out.println(user.getName() + ": " + this.chat.get(this.chat.size() - 1) + System.lineSeparator());
 	}

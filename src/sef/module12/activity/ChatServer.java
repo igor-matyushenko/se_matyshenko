@@ -16,8 +16,7 @@ public class ChatServer {
 		Socket client =null;
 		PrintWriter out=null;
 		boolean endless=true;
-		int port=9888;
-
+		int port=8888;
 		try {
 			server = new ServerSocket(port, 50, InetAddress.getLocalHost());//
 
