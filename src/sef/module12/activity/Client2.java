@@ -5,7 +5,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client1 {
+public class Client2 {
     private static Socket socket;
     private static BufferedReader in;
     private static BufferedWriter out;

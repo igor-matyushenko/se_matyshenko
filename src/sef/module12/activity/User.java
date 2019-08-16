@@ -1,24 +1,22 @@
 package sef.module12.activity;
-
 import java.io.*;
+import java.net.Socket;
 //import java.net.Socket;
 
 public class User implements Runnable {
 
 	private String name;
 
-	private InputStreamReader stream;
-	private OutputStream stream1;
+	private InputStreamReader inputStreamReader;
 	private PrintWriter out;
 
 
 
 
-	public User(String name, InputStream stream, OutputStream stream1) {
-		this.stream = new InputStreamReader(stream);
+	public User(String name, InputStream inputStreamReader, OutputStream outputStream) {
+		this.inputStreamReader = new InputStreamReader(inputStreamReader);
 		this.name = name;
-		out = new PrintWriter(stream1, true);
-		this.stream1 = stream1;
+		out = new PrintWriter(outputStream, true);
 	}
 
 	@Override
@@ -30,7 +28,7 @@ public class User implements Runnable {
 		try {
 
 
-			BufferedReader in = new BufferedReader(this.stream);
+			BufferedReader in = new BufferedReader(this.inputStreamReader);
 
 
 			String line="";
@@ -51,4 +49,11 @@ public class User implements Runnable {
 	public String getName() {
 		return name;
 	}
+
+	public void send(String str) {
+		out.println(str);
+	}
+
+
+
 }

@@ -23,11 +23,14 @@ public class Chat {
 	public void addMessage(User user, String message) {
 		if (!this.users.contains(user)) {
 			this.users.add(user);
-			System.out.println("User " + user.getName() + " login" + System.lineSeparator());
+			System.out.println("User " + user.getName() + " loggon" + System.lineSeparator());
 		}
 
-
 		this.chat.add(message);
+		for (User u : users) {
+			if(!u.getName().equals(user.getName()))
+				u.send(message);
+		}
 		System.out.println(user.getName() + ": " + this.chat.get(this.chat.size() - 1) + System.lineSeparator());
 	}
 }
