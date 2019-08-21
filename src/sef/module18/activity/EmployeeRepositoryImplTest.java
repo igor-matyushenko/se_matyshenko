@@ -106,17 +106,22 @@ public class EmployeeRepositoryImplTest {
     @Test
     public void testInsertEmployee() {
         EmployeeRepository er = new EmployeeRepositoryImpl(conn);
+        final String SQL = " SELECT * FROM EMPLOYEE";
         try {
+            Statement statement = conn.createStatement();
             Employee employee = new EmployeeImpl(34,"IGOR","MATYUSHENKO",3);
             int res = er.insertEmployee(employee);
-//                assertEquals(res, employee.getEmployeeID() );
+            ResultSet resultSet = statement.executeQuery(SQL);
+            resultSet.last();
+            int id = resultSet.getInt("ID");
+                assertEquals(res, id );
                 assertEquals(employee.getFirstName(), "IGOR");
                 assertEquals(employee.getLastName(), "MATYUSHENKO");
                 assertEquals(employee.getProfLevel(), 3);
 
 
         }
-        catch (HRSSystemException  e) {
+        catch (HRSSystemException | SQLException e) {
             e.printStackTrace();
             fail();
         }

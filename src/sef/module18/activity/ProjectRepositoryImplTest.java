@@ -98,7 +98,7 @@ public class ProjectRepositoryImplTest {
                     "A web application that automates insurance transactions.".toUpperCase());
         }catch (HRSSystemException e) {
 
-            System.out.println("пиздос");
+
             System.out.println(HRSSystemException.ERROR_FIND_PROJECT_EMPLOYEEID);
             fail();
 
@@ -110,10 +110,14 @@ public class ProjectRepositoryImplTest {
     public void insertProject() {
         ProjectRepository pr=new ProjectRepositoryImpl(conn);
         try {
-        Project project = new ProjectImpl(44,"System of Secuirity","System of CYBER ATTACK");
+            Statement statement = conn.createStatement();
+            Project project = new ProjectImpl(44,"System of Secuirity","System of CYBER ATTACK");
         int res = pr.insertProject(project);
-
-//        assertEquals(res,project.getProjectID());
+            String SQL = "SELECT * FROM Project";
+            ResultSet resultSet = statement.executeQuery(SQL);
+            resultSet.last();
+            int id = resultSet.getInt("ID");
+        assertEquals(id,res);
         assertEquals(project.getProjectName().toUpperCase(),"System of Secuirity".toUpperCase());
         assertEquals(project.getProjectDescription().toUpperCase(),"System of CYBER ATTACK".toUpperCase());
         }catch (Exception e){
