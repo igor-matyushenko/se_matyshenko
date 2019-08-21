@@ -78,8 +78,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 		List<Project> results = new ArrayList<Project>();
 		try {
 			PreparedStatement pStmt = conn
-					.prepareStatement("select p.* from Project p join Employee_Project_Map epm on " + 
-									  "p.ID = epm.PROJECTID where epm.EMPLOYEEID = ? order by p.ID ASC");
+					.prepareStatement("SELECT PROJECT.* FROM PROJECT  LEFT JOIN EMPLOYEE_PROJECT_MAP  ON PROJECT.ID = EMPLOYEE_PROJECT_MAP.PROJECT_ID  \n" +
+							"WHERE EMPLOYEE_PROJECT_MAP.EMPLOYEE_ID =?\n" +
+							" order by PROJECT.ID ASC");
 			pStmt.setInt(1, employeeID);
 
 			ResultSet rs = pStmt.executeQuery();
@@ -107,7 +108,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 		
 		try {
 			PreparedStatement pStmt = conn
-					.prepareStatement("insert into project (NAME, DESCRIPTION) VALUES (?,?)");
+					.prepareStatement("insert into project (ID,NAME, DESCRIPTION) VALUES (PROJECT_SEQ.NEXTVAL,?,?)");
 
 			pStmt.setString(1, project.getProjectName());
 			pStmt.setString(2, project.getProjectDescription());

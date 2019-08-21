@@ -1,12 +1,7 @@
 package sef.module14.sample;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class ComplexFrame extends JFrame{
@@ -49,6 +44,7 @@ public class ComplexFrame extends JFrame{
 		
 		pack();
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String arg[]){

@@ -26,7 +26,7 @@ public class AccountDAOImpl implements AccountDAO {
 		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, firstName+'%');
-			preparedStatement.setString(2, lastName + '%');
+			preparedStatement.setString(2, lastName+'%');
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				account = new AccountImpl(resultSet.getInt(1),resultSet.getString(2)
@@ -69,9 +69,13 @@ public class AccountDAOImpl implements AccountDAO {
 
 	public boolean insertAccount(String firstName, String lastName, String email)
 			throws AccountDAOException {
-		sql = "INSERT INTO ACCOUNT (FIRST_NAME, LAST_NAME, E_MAIL) VALUES ('firstName', 'lastName', 'email')";
+		//sql = "INSERT INTO ACCOUNT (FIRST_NAME, LAST_NAME, E_MAIL) VALUES ('firstName', 'lastName', 'email')";
+		sql = "INSERT INTO ACCOUNT (FIRST_NAME, LAST_NAME, E_MAIL) VALUES (?, ?, ?)";
 		try {
 			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1,firstName);
+			preparedStatement.setString(2,lastName);
+			preparedStatement.setString(3,email);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

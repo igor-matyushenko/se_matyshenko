@@ -1,13 +1,9 @@
 package sef.module14.sample;
 
-import java.awt.Container;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class ActionListenerFrame extends JFrame implements ActionListener{
 
@@ -35,6 +31,8 @@ public class ActionListenerFrame extends JFrame implements ActionListener{
 		setSize(400,100);
 		setResizable(false);
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("Инкремент и декримент");
 	}
 	
 	public static void main(String arg[]){

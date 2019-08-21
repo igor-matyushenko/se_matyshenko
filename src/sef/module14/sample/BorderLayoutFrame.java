@@ -1,9 +1,7 @@
 package sef.module14.sample;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class BorderLayoutFrame extends JFrame{
 
@@ -31,6 +29,7 @@ public class BorderLayoutFrame extends JFrame{
 		setLocation(300,300);
 		setSize(200,200);
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String arg[]){

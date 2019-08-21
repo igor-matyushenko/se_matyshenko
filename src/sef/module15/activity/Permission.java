@@ -6,5 +6,4 @@ public enum Permission {
 	CREATE,
 	DELETE,
 	EXECUTE;
-	
 }
